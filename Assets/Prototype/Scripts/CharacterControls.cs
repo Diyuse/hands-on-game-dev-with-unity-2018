@@ -40,7 +40,15 @@ public class CharacterControls : MonoBehaviour
 
     private Quaternion GetMouseInput()
     {
-        Vector2 mousePos = Input.mousePosition;
+        /*
+         * Get the position of the mouse on screen in pixel coord
+         * pixel coord is (0,0) on bottom left corner of screen
+         */
+        Vector2 mousePos = Input.mousePosition; 
+
+        /*
+         * Get relative position with the idea that the character is in the middle of the screen
+         */
         Vector2 relativeMousePos = new Vector2(mousePos.x - Screen.width / 2, mousePos.y - Screen.height / 2);
         float angle = Mathf.Atan2(relativeMousePos.y, relativeMousePos.x) * Mathf.Rad2Deg * -1;
         Quaternion rot = Quaternion.AngleAxis(angle, Vector3.up);
