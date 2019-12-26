@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MyCompany.MyGame.Prototype;
+using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
 {
@@ -13,9 +14,16 @@ public class CharacterControls : MonoBehaviour
     /// </summary>
     [SerializeField] private float moveSpeedModifier = 3;
 
+    [SerializeField] private WeaponController.WeaponControllerData weaponData;
+    private WeaponController weaponController;
+
     private Vector3 mousePosition;
     private Vector3 lookDirection;
 
+    private void Awake()
+    {
+        weaponController = new WeaponController(weaponData);
+    }
     public void FixedUpdate()
     {
         HandleInput();
@@ -28,6 +36,11 @@ public class CharacterControls : MonoBehaviour
 
         Vector3 moveDirection = GetInput();
         actor.transform.Translate(moveDirection * Time.deltaTime * moveSpeedModifier, Space.World);
+
+        if (Input.GetMouseButton(0))
+        {
+            weaponController.Use();
+        }
     }
 
     private Vector3 GetInput()
