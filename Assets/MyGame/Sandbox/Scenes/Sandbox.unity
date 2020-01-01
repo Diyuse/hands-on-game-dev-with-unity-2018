@@ -417,15 +417,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 643967784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09786387fd83d69499ba938f7e125627, type: 3}
+  m_Script: {fileID: 11500000, guid: 92ac2084d8d0db8469098908fe53e81f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 643967784}
-  moveSpeedModifier: 3
-  weaponData:
-    projectilePrefab: {fileID: 6415698115626420830, guid: efee863b8bc89c44593d84df84194318,
-      type: 3}
-    projectileSpawnPoint: {fileID: 327228548}
+  characterDataTemplate: {fileID: 11400000, guid: daf8c0bd020c16d469ae97c7624ebd6b,
+    type: 2}
+  weaponDataTemplate: {fileID: 11400000, guid: 9da20955025bbdf4d966f3aed64bd2da, type: 2}
+  weaponBarrel: {fileID: 327228548}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
