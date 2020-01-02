@@ -1,4 +1,5 @@
 ﻿using MyCompany.GameFramework.InputManagement;
+using MyCompany.MyGame.Achievements;
 using MyCompany.MyGame.Player;
 using MyCompany.MyGame.Weapons;
 using System.Collections;
@@ -17,6 +18,12 @@ namespace MyCompany.MyGame.InputManagement
         private InputManager inputManager;
         private IWeapon weapon;
         [SerializeField] private Transform weaponBarrel;
+        private AchievementTracker tracker;
+
+        private void Awake()
+        {
+            tracker = FindObjectOfType<AchievementTracker>();
+        }
 
         private void Start()
         {
@@ -45,7 +52,10 @@ namespace MyCompany.MyGame.InputManagement
 
         private void Shoot()
         {
-            weapon.Shoot();
+            if (weapon.Shoot())
+            {
+                tracker.ReportProgress("shots_fired", 1.0f);
+            }
         }
     }
 }

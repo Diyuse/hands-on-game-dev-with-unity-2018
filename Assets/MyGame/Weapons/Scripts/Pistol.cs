@@ -23,7 +23,7 @@ namespace MyCompany.MyGame.Weapons
         {
             if (lastFire + weaponData.MinFireInterval > Time.time)
             {
-                Debug.Log("CLICK");
+                Debug.LogWarning("CLICK");
                 return false;
             }
 
