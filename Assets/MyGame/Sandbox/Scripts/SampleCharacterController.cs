@@ -19,10 +19,12 @@ namespace MyCompany.MyGame.InputManagement
         private IWeapon weapon;
         [SerializeField] private Transform weaponBarrel;
         private AchievementTracker tracker;
+        private Rigidbody rigidbody;
 
         private void Awake()
         {
             tracker = FindObjectOfType<AchievementTracker>();
+            rigidbody = GetComponent<Rigidbody>();
         }
 
         private void Start()
@@ -47,7 +49,8 @@ namespace MyCompany.MyGame.InputManagement
             Vector3 input = Vector3.zero;
             input.x = inputManager.GetAxis("Horizontal");
             input.z = inputManager.GetAxis("Vertical");
-            transform.Translate(input * Time.deltaTime * characterDataTemplate.Data.MovementSpeed, Space.World);
+            // transform.Translate(input * Time.deltaTime * characterDataTemplate.Data.MovementSpeed, Space.World);
+            rigidbody.velocity = input * characterDataTemplate.Data.MovementSpeed;
         }
 
         private void Shoot()
