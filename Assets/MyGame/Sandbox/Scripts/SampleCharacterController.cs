@@ -4,6 +4,7 @@ using MyCompany.MyGame.Player;
 using MyCompany.MyGame.Weapons;
 using System.Collections;
 using System.Collections.Generic;
+using MyCompany.GameFramework.Physics.Interfaces;
 using UnityEngine;
 
 namespace MyCompany.MyGame.InputManagement
@@ -37,6 +38,18 @@ namespace MyCompany.MyGame.InputManagement
         private void FixedUpdate()
         {
             CheckForInput();
+        }
+        
+        private void OnCollisionEnter(Collision collision)
+        {
+            ICollisionEnterHandler[] handlers = collision.gameObject.GetComponents<ICollisionEnterHandler>();
+            if (handlers != null)
+            {
+                foreach (var handler in handlers)
+                {
+                    handler.Handle(this.gameObject, collision);
+                }
+            }
         }
 
         private void CheckForInput()
