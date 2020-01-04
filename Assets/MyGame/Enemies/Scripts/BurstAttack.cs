@@ -64,7 +64,7 @@ namespace MyCompany.MyGame.Enemies
                 GameObject ins = GameObject.Instantiate(bulletPrefab, point, Quaternion.identity);
                 ins.transform.LookAt(dir);
                 ins.GetComponent<Rigidbody>().velocity = ins.transform.forward * 7;
-                yield return new WaitForSeconds(duration/steps);
+                yield return new WaitForSeconds(duration / steps);
             }
 
             inUse = false;

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
+using MyCompany.GameFramework.Physics.Interfaces;
+using MyCompany.GameFramework.ResourceSystem;
 using UnityEngine;
 
 namespace MyCompany.MyGame.Prototype
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : MonoBehaviour, ICollisionEnterHandler
     {
         private float lifetime;
         private Vector3 direction;
@@ -35,6 +37,16 @@ namespace MyCompany.MyGame.Prototype
         {
             yield return new WaitForSeconds(timer);
             Destroy(gameObject);
+        }
+
+        public void Handle(GameObject instigator, Collision collision)
+        {
+            IDamageable damageable = instigator.GetComponent<IDamageable>();
+            Debug.LogWarning(damageable);
+            if (damageable != null)
+            {
+                damageable.Damage(1);
+            }
         }
     }
 }
