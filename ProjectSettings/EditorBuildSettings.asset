@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/MyGame/MainMenu/Scenes/MainMenu.unity
     guid: 69a4b9d337b713e4fadb607899d3c7d1
   - enabled: 1
-    path: Assets/MyGame/Sandbox/Scenes/BossSandbox.unity
-    guid: 94bda3220a366124abdf6bec8bb99d2d
+    path: Assets/MyGame/Sandbox/Scenes/HUDSandbox.unity
+    guid: 13a805cacd161bb47b1e5ced46e8a3ce
   m_configObjects: {}

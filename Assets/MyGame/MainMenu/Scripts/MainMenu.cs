@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        GoToLevel("BossSandbox");
+        GoToLevel("HUDSandbox");
     }
 
     public void GoToLevel(string levelName)
