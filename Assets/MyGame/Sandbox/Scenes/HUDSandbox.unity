@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 4897c341ed5cbc649b950f6467f9a29b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: d62b4102601e02548901f722d1c3b341, type: 2}
 --- !u!1 &55013369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
