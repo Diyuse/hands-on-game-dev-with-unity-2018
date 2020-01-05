@@ -3,42 +3,42 @@ using MyCompany.GameFramework.ResourceSystem.Interfaces;
 
 namespace MyCompany.GameFramework.ResourceSystem
 {
-    public class Health : IResource
+    public class Ammo : IResource
     {
-        private float currentHealth;
+        private float currentAmmo;
 
         public event Action<float> onValueChanged;
 
         public float CurrentValue
         {
-            get { return currentHealth; }
+            get { return currentAmmo; }
         }
 
-        public Health(float initialValue)
+        public Ammo(float initialValue)
         {
-            currentHealth = initialValue;
+            currentAmmo = initialValue;
         }
 
         public float Add(float amount)
         {
-            currentHealth += amount;
+            currentAmmo += amount;
             if (onValueChanged != null)
             {
-                onValueChanged.Invoke(currentHealth);
+                onValueChanged.Invoke(currentAmmo);
             }
 
-            return currentHealth;
+            return currentAmmo;
         }
 
         public float Remove(float amount)
         {
-            currentHealth -= amount;
+            currentAmmo -= amount;
             if (onValueChanged != null)
             {
-                onValueChanged.Invoke(currentHealth);
+                onValueChanged.Invoke(currentAmmo);
             }
 
-            return currentHealth;
+            return currentAmmo;
         }
     }
 }

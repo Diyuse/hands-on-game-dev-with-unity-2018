@@ -1161,6 +1161,7 @@ GameObject:
   - component: {fileID: 530239598}
   - component: {fileID: 530239600}
   - component: {fileID: 530239599}
+  - component: {fileID: 530239601}
   m_Layer: 5
   m_Name: AmmoPanel
   m_TagString: Untagged
@@ -1224,6 +1225,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530239597}
   m_CullTransparentMesh: 0
+--- !u!114 &530239601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530239597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b134eaf1f9b6d4ab58d1591dc833e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudText: {fileID: 1262175364}
 --- !u!1 &688514950
 GameObject:
   m_ObjectHideFlags: 0

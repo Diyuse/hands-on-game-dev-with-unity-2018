@@ -1,5 +1,7 @@
 ﻿using MyCompany.GameFramework.Coroutines;
 using System.Collections;
+using MyCompany.GameFramework.ResourceSystem;
+using MyCompany.GameFramework.ResourceSystem.Interfaces;
 using UnityEngine;
 
 namespace MyCompany.MyGame.Weapons
@@ -7,15 +9,21 @@ namespace MyCompany.MyGame.Weapons
     public class Pistol : IWeapon
     {
         private WeaponData weaponData;
-        private int currentAmmo;
+        // private int currentAmmo; //Replacing this to allow for ammo to be display on the HUD
+        private IResource ammo;
         private bool isReloading = false;
         private float lastFire = 0;
         private Transform actorLocation;
 
+        public IResource Ammo
+        {
+            get { return ammo; }
+        }
+
         public Pistol(WeaponData weaponData, GameObject actor)
         {
             this.weaponData = weaponData;
-            currentAmmo = weaponData.MaxAmmo;
+            ammo = new Ammo(weaponData.MaxAmmo);
             actorLocation = actor.transform;
         }
 
@@ -23,34 +31,34 @@ namespace MyCompany.MyGame.Weapons
         {
             if (lastFire + weaponData.MinFireInterval > Time.time)
             {
-                Debug.LogWarning("CLICK");
+                // Debug.LogWarning("CLICK");
                 return false;
             }
 
             if (isReloading)
             {
-                Debug.LogWarning("RELOADING");
+                // Debug.LogWarning("RELOADING");
                 return false;
             }
 
-            if (currentAmmo > 0)
+            if (ammo.CurrentValue > 0)
             {
-                currentAmmo--;
+                ammo.Remove(1.0f);
                 lastFire = Time.time;
                 SpawnProjectile();
-                Debug.Log(string.Format("PEW {0}/{1}", currentAmmo, weaponData.MaxAmmo));
+                // Debug.Log(string.Format("PEW {0}/{1}", currentAmmo, weaponData.MaxAmmo));
                 return true;
             }
 
-            if (currentAmmo <= 0 && weaponData.DoesAutoReload)
+            if (ammo.CurrentValue <= 0 && weaponData.DoesAutoReload)
             {
-                Debug.LogWarning("RELOADING");
+                // Debug.LogWarning("RELOADING");
                 Reload();
                 return false;
             }
             else
             {
-                Debug.LogWarning("Out of ammo!");
+                // Debug.LogWarning("Out of ammo!");
                 return false;
             }
         }
@@ -78,8 +86,8 @@ namespace MyCompany.MyGame.Weapons
                 timer += Time.deltaTime;
                 yield return null;
             }
-            Debug.LogError("RELOAD COMPLETE");
-            currentAmmo = weaponData.MaxAmmo;
+            // Debug.LogError("RELOAD COMPLETE");
+            ammo.Add(weaponData.MaxAmmo);
             isReloading = false;
         }
     }

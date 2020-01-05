@@ -22,14 +22,16 @@ namespace MyCompany.MyGame.InputManagement
         private AchievementTracker tracker;
         private Rigidbody rigidbody;
 
-        private void Awake()
+        public IWeapon Weapon
         {
-            tracker = FindObjectOfType<AchievementTracker>();
-            rigidbody = GetComponent<Rigidbody>();
+            get { return weapon; }
         }
 
-        private void Start()
+        private void Awake()
         {
+            // Initialize things as early as possible to ensure that they exist later on
+            tracker = FindObjectOfType<AchievementTracker>();
+            rigidbody = GetComponent<Rigidbody>();
             inputManager = new InputManager(new SampleBindings(), new RadialMouseInputHandler());
             inputManager.AddActionToBinding("shoot", Shoot);
             weapon = new Pistol(weaponDataTemplate.WeaponData, weaponBarrel.gameObject);
